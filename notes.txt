@@ -1,0 +1,17 @@
+Everything in javascript happens inside an execution context, execution context is like a big box and it has two components in it.The first component is also knows as the memory component, so this is the place wherer all the variables and functions are stored as key-value pairs. if suppose we have a variable "a" which is equivalent to 10, it will be stored over here and also functions also stored in this memory component, memory components also known as variable environment
+The second component of this execution context is the code component, so this the place where code is executed one line at a time,it is also known as thread of execution, i repeat, thread of execution.
+Javascript is a synchronous single-threaded language
+invoke a function:
+wheneve you see a function name,with these parantheses, it means that the function is now being executed.
+a brand new execution context inside this is created,
+1st phase is memory creation,dont forget that the memory is allocated to variables and functions inside this function. variables is undefined in phase1.
+2nd phone is the code execution phase, in this we'll be executing each line here
+return: keyword states that, now return the control of the program, to the place where this function was invoked
+
+var n = 2;
+function square (num){
+  var ans = num * num;
+  return ans;
+}
+var square2 = square(n);
+var square4 = square(4);
