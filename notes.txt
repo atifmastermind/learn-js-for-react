@@ -15,3 +15,16 @@ function square (num){
 }
 var square2 = square(n);
 var square4 = square(4);
+
+it manages a stack this is known as the call stack, it has its own stack.
+what is a call stack: the call stack is a stack in the bottom of the stack we have our global execution contaxt, that means whenever any js program is run, this call tack is populated with this global execution context. this whole execution context is pushed inside this stack, whenever a function is invoked, or a new execution content is created, so this execution context is put inside the stack.
+
+whenever an execution context is created it is pushed into the stack, and whenever an execution context is deleted, it will move out of the stack.
+
+"Call stack maintains the order of executio of execution contexts"
+call stack is also known by very fancy names. there are lot of fancy names which you will see on web,
+-- exection context stack
+-- program stack
+-- control stack
+-- runtime stack
+-- machine stack
