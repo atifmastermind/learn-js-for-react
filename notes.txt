@@ -28,3 +28,19 @@ call stack is also known by very fancy names. there are lot of fancy names which
 -- control stack
 -- runtime stack
 -- machine stack
+
+
+variables & functions:-
+
+Hoisting in javascript:
+Hoisting is javascript which you can access these variables and functions even before you have initialized it and you have put same values in it you can access it without any errors
+working example:
+  var x = 7;
+      function getName() {
+        console.log("glad it works");
+      }
+      getName();
+      console.log(x);
+
+working example:
+non-working example:
