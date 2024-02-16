@@ -42,5 +42,50 @@ working example:
       getName();
       console.log(x);
 
-working example:
-non-working example:
+
+difrence between defined an undefined:-
+
+undefined:-
+even before code run its store the memory to variable, and if its function its store the whole function to memory.
+not defined: 
+if variable is not prasent or removed its shows the error not defined before its not even in memory.
+
+
+if function are arrow function
+
+when get name is an arrow function its behaves just like an variable
+   var getName = () => {
+        console.log("glad it works");
+      }
+
+its says that getName is not a function
+when memory allocation phase of the execution contact it will allocate the memories with a place holder undefined.
+
+one more way to declare of function:-
+var getName2 = function(){
+
+}
+
+its also behaves like an variable
+
+
+Function invocation and variable environment:-
+var x = 1;
+a();
+b();
+console.log(x);
+
+ function a() {
+        var x = 10;
+        console.log(x);
+      }
+      function b() {
+        var x = 100;
+        console.log(x);
+      }
+
+when code run global execution contaxt created, 1st line run 1st phase in memory contect x is undefined then in second phase x value is 1, after that 2 line run and a new execution context is created and function a is added in call stack, x value is undefined in 1st phase then in 2nd phase x value is 10 and print the value of x that is 10 then x pop out from stack. and execution context is deleted.
+
+after that 3 line run and a new execution context is created and function b is added in call stack, x value is undefined in 1st phase then in 2nd phase x value is 100 and print the value of x that is 100 then x pop out from stack. and execution context is deleted.
+
+at 4th line x value is printed as 1.
