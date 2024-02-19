@@ -89,3 +89,21 @@ when code run global execution contaxt created, 1st line run 1st phase in memory
 after that 3 line run and a new execution context is created and function b is added in call stack, x value is undefined in 1st phase then in 2nd phase x value is 100 and print the value of x that is 100 then x pop out from stack. and execution context is deleted.
 
 at 4th line x value is printed as 1.
+
+
+window & this keyword:-
+shortest js program even js file is empty.
+if we write window in console its shows an object with lots of functions and objects,these functions and variables is created by javascript engine, and into the global space you can access all the variables and functions anywhere in javascript program, ths functioality is givien by javascript engine.
+javascript also create THIS key word, this points to window object.
+window is a globel object which is created a long with the global education contact
+
+globel space:-
+any code you write in javascript which is not inside a function is called globl space, these variables or functions attached to window object.
+var a = 10;
+using glogel space
+console.log(window.a);
+console.log(this.a); // its also so tha same thing
+and this automatically assume that you are referring to global space 
+console.log(a);
+
+whenever we try to access variavles and functions in program and we dont put anything in front of it, its assume that its in globel space.
