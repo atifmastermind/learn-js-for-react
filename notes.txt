@@ -167,3 +167,68 @@ console.log(b);
 // ? this whole process is called scope chain.
 // * scope chain is nothing but this chain of all the lexical envernment and the perant refrances this is what the scope is.
 
+// ? What is a Temporal Dead Zone:-
+
+// *temporal dead zone is the time since when this let variable was hoisted and till its initilize some values the time between that is called or know as temporal dead zone.
+
+// whenever you try to acsess a variable inside a temporal dead zone it gives you a refrance error
+//error name : cannot access 'a' before initiaalization
+// when the variables are in temporal dead zone you can not access them.they can only be access once some values innitallize to them.
+
+// ? are let & const declarations hoisted?
+// these let and const declarations are not hoisted that whould be incorect, thses are in the temporal dead zone for the time being.
+
+let a = 10;
+console.log(a);
+var b = 100;
+
+// in case of let and const they are allocatted memory they are also allocatted memory and that is what called hoisted,but they are stored in a different memory space then globel, they are not only globel object now they are stored in a saprate memory space and you can not accsess this memory space you can not asscess let and const decrarations before you have putting some value to them.
+
+// let is more strict then var there is one more strictness level that we can not do re declarations
+
+// example:-
+
+let a = 10;
+let a = 100;
+
+// its throws a syntax Error so it's not even read a single line.
+
+// it's possible in var but not possible in let
+
+// ? const
+// its behaves very much same to let, but there are differences it is even more strict then let.
+// we have to initialize in same line, we can not initialize later.
+let a = 10;
+const b = 1000;
+
+// ?  syntax Error
+
+let a = 1900;
+
+const b;
+
+// it will give an error SyntaxError: missing initializer in const declaration, because here we have missing syntax its acpect that we have to give value.
+
+// ? reference Error vs.
+
+// when javascript engine tries to find out a specific variable inside the memory space and you can not access it, then its gives a refrance error.
+
+console.log(a);
+let a = 1900;
+
+// ?  Type Error
+
+const b = 1000;
+b = 100000;
+
+// ! its gives and error TypeError: Assignment to constant variable. becouse its a const type variable, we can not declare variavle later we have to initialize in same line.
+
+
+// which variable should we used 
+// high praority const 
+// beucase you can not change this later
+// then let
+// beucase let have temporal dead zone and you will not runinto unexpecte error
+// don't use var now ( some time we might have to use this but use it very consuanly )
+
+// temporal dead zone can some time mess our life as developer also, it can lead to lots of unexpected errors so the best way to avoid these temporal dead zone is to always put your initialization and declaration on top
