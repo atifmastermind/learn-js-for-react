@@ -50,6 +50,14 @@ even before code run its store the memory to variable, and if its function its s
 not defined: 
 if variable is not prasent or removed its shows the error not defined before its not even in memory.
 
+undefined vs not defined
+var a = 7;
+even before this code run javascript reserved a memory to variable a its like a placeholder its undefined.
+undefined is not equl to empty
+not defined
+console.log(x);
+if we try to run this code it will give us an error that x is not defined. because we have not allocated memory to x
+javascript is loosly type language
 
 if function are arrow function
 
@@ -107,3 +115,55 @@ and this automatically assume that you are referring to global space
 console.log(a);
 
 whenever we try to access variavles and functions in program and we dont put anything in front of it, its assume that its in globel space.
+
+
+// ? scope & lexical environment:-
+function a() {
+  var b = 10;
+  c();
+  function c() {}
+}
+
+a();
+console.log(b);
+// defination of scope
+// * scope means where you can access specific variable or a function in our code that is scope
+// there are 2 expect,
+// 1st is, what is the scope of this variable:-
+// example:-
+// where i can access this variable b, is b inside the scope of function c, that means can i access b inside c.
+// so there are 2 ways to look at it
+// ? what is the scope of the variable
+// ? is b inside the scope of function c
+
+//scope is directly dependent of lexical environment
+// when run program u know the globel excecution context is created and its push inside call stack
+
+// ? whenever execution context is created a lexical environment is also cerated
+
+// * so lexical environment is the local memory along with the lexical environment of its parent
+
+// ? what is lexical:-
+// lexical in a term means hierarchy or in a sequence
+
+// example:-
+//  c function is lexicaly siting inside a function
+
+// scope chain:-
+
+function a() {
+  var b = 10;
+  c();
+  function c() {
+    console.log(b);
+  }
+}
+
+a();
+console.log(b);
+
+// ! when javascript encounter this line  console.log(b); inside c funtion its try to find the b inside the local memory of C, it won't find there because b is not in the local memory,now javascript engine gose to this refrance and gose to the lexical enmernment of this perent (so lexical means where it is lexical or physicaly prasent in the code so c is phicicaly prasent in a so c phycicaly perant is a so it will go to the lexical envernment of a ) so not it will try to search b inside the lexical envernment of a it find out b inside a so its goee back and its print of b inside the console.
+
+// ? this whole process is called scope chain.
+// * scope chain is nothing but this chain of all the lexical envernment and the perant refrances this is what the scope is.
+
