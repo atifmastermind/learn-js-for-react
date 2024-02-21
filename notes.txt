@@ -232,3 +232,81 @@ b = 100000;
 // don't use var now ( some time we might have to use this but use it very consuanly )
 
 // temporal dead zone can some time mess our life as developer also, it can lead to lots of unexpected errors so the best way to avoid these temporal dead zone is to always put your initialization and declaration on top
+
+
+// ? block scope & shadowing
+
+//? BLOCK
+// block is defined by these curly braces, block is also known as compond statment. block is used to combain multiply javascript statment into one group
+// example
+// {
+//   var a = 10;
+//   console.log(a);
+// }
+// we group multiple statment togather in a block so that we can use it where javascript expect one statment.
+
+// if (true) {
+//   var a = 10;
+//   console.log(a);
+// }
+
+// ? BLOCK SCOPE
+// Block scope means what all variables and functions we can access inside this block
+// {
+//   var a = 10;
+//   let b = 20;
+//   const c = 30;
+//   console.log(a);
+//   console.log(b);
+//   console.log(c);
+// }
+
+// console.log(a);
+// console.log(b);
+// console.log(c);
+
+// out side of block b and c console not print because let and const are block scope.
+
+// ? Shadowing
+// if you have same name variable out side this block so inside variavle shadows that variable.
+// shadowing is also works in functions is well as same as block
+// var a = 100
+// {
+//   var a = 10;
+//   let b = 20;
+//   const c = 30;
+//   console.log(a);
+//   console.log(b);
+//   console.log(c);
+// }
+// console.log(a);
+
+// block variable was shadows and its also modified the value of outer variable, becuase they are points on same memory location.
+
+// ! in case of let & const its diffrent
+// the variable b which was outside of block (in script not even in globel) and another b whcih is inside the block
+// here we have three type of scope 1st is globel scope 2nd is script 3 is block scope
+// let b = 100;
+// {
+//   var a = 10;
+//   let b = 20;
+//   const c = 30;
+//   console.log(a);
+//   console.log(b);
+//   console.log(c);
+// }
+// console.log(b);
+
+//? illegal shadowing
+
+// if you want to shadowing let a variable inside a block using a var you can not do that
+// but var outside and let inside a scope will work
+// ! but its valid if you do with let outside and let inside or var outside and var inside the scope
+
+// let a = 20;
+// {
+//   var a = 20;
+// }
+
+// ? arrow functions
+// Whether you declare a function with the function keyword or arrow functions, we feel that those might have different scopes, but they are exactly the same. All the scope rules that work on functions are exactly the same in arrow functions as well.
