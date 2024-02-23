@@ -409,3 +409,228 @@ b = 100000;
 // - setTimeouts
 // - Iterators
 // - and many more
+
+
+// ? setTimeout + closures interview questions
+
+// ? setTimeout
+// many people thinks that javascript settimeout will wait, but no it does not wait for anyone
+// its takes the call back function and stores it to some place and attached a timmer to it. when timmer finished its put that into stack and print it
+// function x() {
+//   var i = 1;
+//   setTimeout(function () {
+//     console.log(i);
+//   }, 1000);
+//   console.log("Rukka kyaa nahii naa ");
+// }
+
+// x();
+
+// ? most asked ticky js qus
+// print 1 2 3 4 5  and with 1 sec delay,
+
+// this won't work becouse i for each copy of the function is refering to the same memory scope so i become 6 becuase loop was runing
+
+// function x() {
+//   for (var i = 1; i <= 5; i++) {
+//     setTimeout(function () {
+//       console.log(i);
+//     }, i * 1000);
+//   }
+//   console.log("nahi print hoa sahi");
+// }
+
+// x();
+
+// ! with closures you can fixed this issue even with var
+
+function x() {
+  for (let i = 1; i <= 5; i++) {
+    function closures(x) {
+      setTimeout(function () {
+        console.log(x);
+      }, x * 1000);
+    }
+    closures(i);
+  }
+  console.log("print hoa na");
+}
+x();
+
+// fixing
+// just change var to let becuase let is a block scope o each time loop run its store a value in difrent memory scope
+
+// function x() {
+//   for (let i = 1; i <= 5; i++) {
+//     setTimeout(function () {
+//       console.log(i);
+//     }, i * 1000);
+//   }
+//   console.log("print hoa na");
+// }
+// x();
+
+
+// ? What is closures in javascript
+// a function along with its lexical envernment (in other words closures is a combination of a function and its lexical scope bundle togather is a closures ) is closures.
+
+// explain more
+
+// Each and every function in javascript has access to its outer lexical environment, which means it has access to variables and functions that are present in the environment of its parent, so each and every function has access to them. Even when this function is executed in another scope, it is not in its original scope, but even when it is executed in another scope, it still remembers its outer lexical environment where it was originally present in the code.
+
+// ? example of closure
+// Sopose we have nasted functions so that inner function has access to its outer environment (outer function). If we create a variable in outer function, inner function has access to this variable, so this inner function, along with its lexical outer environment, is known as closure.
+
+// The important part of the closure is that if I return this inner function outside of this function and try to access it somewhere else in the outer scope, it will still remember what the value was, so if I do outer()(), it will still print the value.
+
+// function outer() {
+//   var a = 10;
+//   function inner() {
+//     console.log(a);
+//   }
+//   return inner;
+// }
+
+// outer()();
+
+// ? use of double paranthesis
+//  outer()();
+//  If we execute this outer(), it will return the inner function. This paranthesis is like calling an inner function; we can also write it like this.
+//  var close = outer();
+//  close();
+
+// If we change the sequence of variables from before inner function to bottom, it will still run and the result will be the same because, as we know, closure works with function outer environment, not in a particular sequence.
+
+// ? are let declarations closed over ?
+// What happens if we change var to let? Because let is a block scope, we cannot access it outside. but still, it behaves the same way.
+
+// ? relation of scope chain and closure
+// In this specific case, a is not defined directly within close, but it's available through closure since close retains access to the scope of outer where a is defined. b has the value "helloworld", which was passed during the invocation of outer, and c retains its value of 20 defined in outest. Therefore, the output will be something like 10 helloworld 20.
+// function outest() {
+//   var c = 20;
+//   function outer(b) {
+//     var a = 10;
+//     function inner() {
+//       console.log(a, b, c);
+//     }
+//     return inner;
+//   }
+//   return outer;
+// }
+
+// var close = outest()("helowworld");
+// close();
+
+// ? conflictiog name global variable
+// These two "le" variables are completely different. If we run this code, the result will be the same, like "a" value of 10 (not 100), because it refers to its lexical environment.
+// But if we did not have that "a" variable in scope, then it would have to default the global variable and print 100 because "a" was found in a global environment (if it was not found in a global environment, then it would be a reference error).
+
+// function outest() {
+//   var c = 20;
+//   function outer(b) {
+//     let a = 10;
+//     function inner() {
+//       console.log(a, b, c);
+//     }
+//     return inner;
+//   }
+//   return outer;
+// }
+
+// let a = 100;
+
+// var close = outest()("helowworld");
+// close();
+
+// ? advantages of closure
+// Closures are the most beautiful part of a Javascript, and they have lots of advantages, like:
+// - Module design pattern
+// - currying
+// - function line once
+// - memoize
+// - maintaining state in async world
+// - setTimeouts
+// - Iterators
+// - and many more
+
+// ? data hidding & encapsulation
+// suppose we have a variable and want to have data privacy over it so that other functions or code cannot have access to that particular data. This is called data hiding or encapsulation.
+
+// ? example data privacy using closures
+// The majar flow or problem over this code is that anybody in our code can access this counter variable and can change it, so here comes data hidding or data privacy in to picture, so we want to somehow insure that no one else in the program can modify this counter and only we can increment that "incrementCounter" function. To achieve that, we can use clousers and wrap this in a function, so now this "count" variable is hidden. Save a variable in a variable name, and each and every time we run that variable, it hits and runs the function counter. If we save that function into a new variable, it creates a new copy of a function.
+
+// function counter() {
+//   var count = 0;
+//   function incrementCounter() {
+//     count++;
+//     console.log(count);
+//   }
+//   return incrementCounter;
+// }
+
+// var counter1 = counter();
+// var counter2 = counter();
+
+// counter1();
+// counter2();
+
+// ? function constructor in javascript
+// Previous function is not a good way if we consider that way. In that case, we can use constructor functions like separate functions for increment and decrement. for constructor we have to used "new" keyword
+
+// function Counter() {
+//   var count = 0;
+//   this.incrementCounter = function () {
+//     count++;
+//     console.log(count);
+//   };
+//   this.decrementCounter = function () {
+//     count--;
+//     console.log(count);
+//   };
+// }
+
+// var counter1 = new Counter();
+
+// counter1.incrementCounter();
+// counter1.incrementCounter();
+// counter1.decrementCounter();
+
+// ? disadvantages of closures
+// Closures prevent variables inside functions from being released by memory i.e. as long as the closure is active, the memory can't be garbage collected.
+// Creating a function inside a function leads to duplicity in memory and causes the slowing down of the application.
+
+// ? garbage collector in javascript
+
+// Some high-level languages, such as JavaScript, utilize a form of automatic memory management known as garbage collection (GC). The purpose of a garbage collector is to monitor memory allocation and determine when a block of allocated memory is no longer needed and reclaim it
+
+// It's a program in the browser or in the javascript engine that kind of frees the ununilized memory. When you create a function, javascript is a high level of programming language; it's up to the developer how to allocate and deallocate memory.
+
+// When ever there are unused variables, it's kind of like just taking them out of memory; it just frees up the memory. When ever it finds out that these variables are no longer needed, that's what garbage collectors do.
+
+// ? relations between garbage collectors and closures
+// For example, if we have this query, we need "x" because function "b" is required to print that inconsole.
+// function a() {
+//   var x = 0;
+//   function b() {
+//     console.log(x);
+//   }
+//   return b;
+// }
+
+// var y = a();
+
+// ? exmple of smart garbage collection
+// Some of the modern browsers and Javasript engines, suppose v8 in Chrome, have smart Javasript garbage machanasam. where its like some how finds out that thise variables are un reachable and they smartly collect these garbage variables.
+// smartly means lets see the example:
+// Because we only print the x value, z will be garbage collected.
+
+// function a() {
+//   var x = 0,
+//     z = 10;
+//   function b() {
+//     console.log(x);
+//   }
+//   return b;
+// }
+
+// var y = a();
