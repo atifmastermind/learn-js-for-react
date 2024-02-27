@@ -675,8 +675,8 @@ x();
 // };
 // b(1,2);
 
-//? first class functions
-// the ability to use functions as values is known as first class functions ( the ability of functions to be used as values and can be pass this in an argument to another functions and can be return from the functions is this ability is known as frist class functions in javascript )
+//? first class functions or functions are first class citizens
+// the ability to use functions as values is known as first class functions or first class citizens ( the ability of functions to be used as values and can be pass this in an argument to another functions and can be return from the functions is this ability is known as frist class functions in javascript )
 // this is a very heavy term for what we already know, instead of these arguments we can even pass functions inside another functions as an arguments, function are treated as values
 // var b = function (param1) {
 //   console.log(param1);
@@ -692,3 +692,4 @@ x();
 // console.log(b());
 
 //? arrow function
+// arrow function comeup from ES6 or ECMA script
